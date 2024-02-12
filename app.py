@@ -16,7 +16,7 @@ interpreter.allocate_tensors()
 
 print('Model loaded. Check http://127.0.0.1:5000/')
 
-labels = {0: 'Healthy', 1: 'Powdery', 2: 'Rust'}
+labels = {0: 'Healthy', 1: 'Rust', 2: 'Powdery'}
 
 def getResult(image_path):
     input_details = interpreter.get_input_details()
