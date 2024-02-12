@@ -16,7 +16,8 @@ interpreter.allocate_tensors()
 
 print('Model loaded. Check http://127.0.0.1:5000/')
 
-labels = {0: 'Healthy', 1: 'Rust', 2: 'Powdery'}
+# Define labels in the same order as the model output
+labels = {0: 'Healthy', 1: 'Powdery', 2: 'Rust'}
 
 def getResult(image_path):
     input_details = interpreter.get_input_details()
@@ -37,12 +38,8 @@ def getResult(image_path):
 def index():
     return render_template('index.html')
 
-
-
-
 @app.route('/predictApi', methods=["POST"])
 def api():
-    # Get the image from post request
     try:
         if 'file' not in request.files:
             return "Please try again. The Image doesn't exist"
@@ -54,11 +51,8 @@ def api():
         predictions = getResult(file_path)
         predicted_label = labels[np.argmax(predictions)]
         return jsonify({'prediction': predicted_label})
-    except:
-        return jsonify({'Error': 'Error occur'})
-
-
-
+    except Exception as e:
+        return jsonify({'Error': str(e)})
 
 @app.route('/predict', methods=['POST'])
 def upload():
