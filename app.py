@@ -3,7 +3,6 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from PIL import Image
-import cv2
 from flask import Flask, request, render_template , jsonify
 from werkzeug.utils import secure_filename
 from tensorflow.keras.preprocessing.image import load_img, img_to_array

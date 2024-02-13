@@ -1,7 +1,6 @@
 gunicorn
-Flask
-tensorflow
-numpy
-Pillow
-opencv-python
+Flask==2.3.2
+tensorflow==2.13.0
+numpy==1.23.0
+Pillow==10.2.0
 
